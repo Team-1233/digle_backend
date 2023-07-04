@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ public class NotificationController {
     private final NotificationService notificationService;
 
     @PostMapping("/notification")
-    public void createNotification(@RequestBody NotificationRequest request) {
+    public void createNotification(@Valid @RequestBody NotificationRequest request) {
         notificationService.createNotification(request);
     }
 

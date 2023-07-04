@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/one2three3"
-    username: root
-    password: wjdgus2007?
+    url: ${DB_URL}
+    username: ${DB_NAME}
+    password: ${DB_PW}
     hikari:
       auto-commit: false
       connection-test-query: SELECT 1
