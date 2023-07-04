@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum AccidentErrorCode implements ErrorCode {
 
-
+    NOT_FOUND("ACCIDENT_001", 404)
 
     ;
 

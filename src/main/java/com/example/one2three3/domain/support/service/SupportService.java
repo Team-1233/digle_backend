@@ -9,6 +9,9 @@ import com.example.one2three3.domain.support.repository.SupportRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -31,12 +34,22 @@ public class SupportService {
                         .build());
     }
 
-    public SupportAmountResponse inquireSupportAmount(SupportRequest request) {
+    public SupportAmountResponse getSupportAmount(SupportRequest request) {
+        List<Support> supports = supportRepository.findAllByAccident_Id(request.getAccidentId());
 
-        Long supportAmount = supportRepository.sumByAccidentIdWithSupportMoney(request.getAccidentId());
+        Long totalSupportAmount = supports.stream()
+                .mapToLong(Support::getSupportAmount)
+                .sum();
+
+        Long todaySupportAmount = supports.stream()
+                .filter(support -> support.getTime()
+                        .isAfter(LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT)))
+                .mapToLong(Support::getSupportAmount)
+                .sum();
 
         return SupportAmountResponse.builder()
-                .supportAmount(supportAmount)
+                .totalSupportAmount(totalSupportAmount)
+                .todaySupportAmount(todaySupportAmount)
                 .build();
     }
 }

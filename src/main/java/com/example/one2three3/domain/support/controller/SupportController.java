@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class SupportController {
 
     private final SupportService supportService;
+
     @PostMapping
     public void createSupport(SupportRequest request) {
         supportService.createSupport(request);
     }
 
     @GetMapping
-    public SupportAmountResponse inquireSupportAmount(SupportRequest request) {
-        return supportService.inquireSupportAmount(request);
+    public SupportAmountResponse getSupportAmount(SupportRequest request) {
+        return supportService.getSupportAmount(request);
     }
 }

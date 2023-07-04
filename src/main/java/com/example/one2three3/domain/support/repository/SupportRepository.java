@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface SupportRepository extends JpaRepository<Support, Long> {
 
-    @Query(value = "SELECT COALESCE(SUM(S.supportAmount), 0) FROM Support as S WHERE S.accident.id = :accidentId")
-    Long sumByAccidentIdWithSupportMoney(Long accidentId);
+    List<Support> findAllByAccident_Id(Long accidentId);
 }

@@ -24,6 +24,6 @@ public class NotificationController {
 
     @GetMapping
     public List<NotificationResponse> inquireNotification() {
-        return notificationService.inquireNotification();
+        return notificationService.getNotification();
     }
 }
