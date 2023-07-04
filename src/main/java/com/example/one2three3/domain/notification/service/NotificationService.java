@@ -7,11 +7,9 @@ import com.example.one2three3.domain.notification.controller.dto.response.Notifi
 import com.example.one2three3.domain.notification.entity.Notification;
 import com.example.one2three3.domain.notification.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
-
-import javax.validation.Valid;
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class NotificationService {
