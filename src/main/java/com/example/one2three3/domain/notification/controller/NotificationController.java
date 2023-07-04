@@ -5,26 +5,24 @@ import com.example.one2three3.domain.notification.controller.dto.response.Notifi
 import com.example.one2three3.domain.notification.entity.Notification;
 import com.example.one2three3.domain.notification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-@RequiredArgsConstructor
 @RestController
+@RequestMapping("/notification")
+@RequiredArgsConstructor
 public class NotificationController {
 
     private final NotificationService notificationService;
 
-    @PostMapping("/notification")
+    @PostMapping
     public void createNotification(@Valid @RequestBody NotificationRequest request) {
         notificationService.createNotification(request);
     }
 
-    @GetMapping("/notification")
+    @GetMapping
     public List<NotificationResponse> inquireNotification() {
         return notificationService.inquireNotification();
     }
