@@ -1,10 +1,7 @@
 package com.example.one2three3.domain.error;
 
-import lombok.Getter;
-
 import java.io.Serializable;
 
-@Getter
 public record ErrorResponse(String message, String code, int status) implements Serializable {
 
     private static final String DEFAULT_MESSAGE = "";
