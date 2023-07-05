@@ -4,6 +4,7 @@ import com.example.one2three3.domain.accident.controller.dto.request.AccidentReq
 import com.example.one2three3.domain.accident.service.AccidentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ public class AccidentController {
 
     private final AccidentService accidentService;
     @PostMapping
-    public void createAccident(AccidentRequest request) {
+    public void createAccident(@RequestBody AccidentRequest request) {
         accidentService.createAccident(request);
     }
 }
