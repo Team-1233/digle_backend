@@ -4,10 +4,9 @@ import com.example.one2three3.domain.support.controller.dto.request.SupportReque
 import com.example.one2three3.domain.support.controller.dto.response.SupportAmountResponse;
 import com.example.one2three3.domain.support.service.SupportService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/support")
@@ -17,7 +16,7 @@ public class SupportController {
     private final SupportService supportService;
 
     @PostMapping
-    public void createSupport(SupportRequest request) {
+    public void createSupport(@Valid @RequestBody SupportRequest request) {
         supportService.createSupport(request);
     }
 

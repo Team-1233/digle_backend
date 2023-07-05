@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class AccidentRequest {
+public class CreateAccidentRequest {
 
     @NotBlank
     private String location;
