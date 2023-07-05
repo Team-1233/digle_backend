@@ -31,11 +31,11 @@ public class Accident {
 
     private LocalDateTime time;
 
-    public static Accident generate(String location, String content, String typeName) {
+    public static Accident generate(String location, String content, String typeName, String account) {
         AccidentType type = AccidentType.valueOf(typeName);
 
         return Accident.builder()
-                .temporaryAccount("")
+                .temporaryAccount(account)
                 .location(location)
                 .content(content)
                 .state(AccidentState.GENERATION)

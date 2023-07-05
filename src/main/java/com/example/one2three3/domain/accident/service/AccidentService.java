@@ -25,7 +25,8 @@ public class AccidentService {
                 Accident.generate(
                         request.getLocation(),
                         request.getContent(),
-                        request.getDisasterType()
+                        request.getDisasterType(),
+                        request.getAccount()
                 )
         );
     }

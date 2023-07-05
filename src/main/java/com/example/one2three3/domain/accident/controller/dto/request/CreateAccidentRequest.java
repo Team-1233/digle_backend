@@ -19,4 +19,7 @@ public class CreateAccidentRequest {
 
     @NotBlank
     private String disasterType;
+
+    @NotBlank
+    private String account;
 }
