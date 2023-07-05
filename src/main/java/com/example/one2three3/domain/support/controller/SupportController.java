@@ -6,6 +6,8 @@ import com.example.one2three3.domain.support.service.SupportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/support")
 @RequiredArgsConstructor
@@ -14,7 +16,7 @@ public class SupportController {
     private final SupportService supportService;
 
     @PostMapping
-    public void createSupport(@RequestBody SupportRequest request) {
+    public void createSupport(@Valid @RequestBody SupportRequest request) {
         supportService.createSupport(request);
     }
 

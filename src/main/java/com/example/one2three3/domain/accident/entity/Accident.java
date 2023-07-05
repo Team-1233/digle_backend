@@ -44,7 +44,8 @@ public class Accident {
                 .build();
     }
 
-    public void end() {
+    public Accident end() {
         this.state = AccidentState.END;
+        return this;
     }
 }
