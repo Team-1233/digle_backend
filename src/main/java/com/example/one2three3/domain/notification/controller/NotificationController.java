@@ -2,7 +2,6 @@ package com.example.one2three3.domain.notification.controller;
 
 import com.example.one2three3.domain.notification.controller.dto.request.NotificationRequest;
 import com.example.one2three3.domain.notification.controller.dto.response.NotificationResponse;
-import com.example.one2three3.domain.notification.entity.Notification;
 import com.example.one2three3.domain.notification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,7 @@ public class NotificationController {
     }
 
     @GetMapping
-    public List<NotificationResponse> inquireNotification() {
+    public List<NotificationResponse> getNotification() {
         return notificationService.getNotification();
     }
 }

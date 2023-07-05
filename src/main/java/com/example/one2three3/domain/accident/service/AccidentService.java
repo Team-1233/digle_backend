@@ -14,10 +14,11 @@ public class AccidentService {
 
     public void createAccident(AccidentRequest request) {
         accidentRepository.save(
-                Accident.builder()
-                        .location(request.getLocation())
-                        .content(request.getContent())
-                        .disasterType(request.getDisasterType())
-                        .build());
+                Accident.generate(
+                        request.getLocation(),
+                        request.getContent(),
+                        request.getDisasterType()
+                )
+        );
     }
 }

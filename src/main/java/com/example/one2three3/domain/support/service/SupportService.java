@@ -2,6 +2,8 @@ package com.example.one2three3.domain.support.service;
 
 import com.example.one2three3.domain.accident.entity.Accident;
 import com.example.one2three3.domain.accident.repository.AccidentRepository;
+import com.example.one2three3.domain.error.DomainException;
+import com.example.one2three3.domain.error.exception.AccidentErrorCode;
 import com.example.one2three3.domain.support.controller.dto.request.SupportRequest;
 import com.example.one2three3.domain.support.controller.dto.response.SupportAmountResponse;
 import com.example.one2three3.domain.support.entity.Support;
@@ -22,9 +24,8 @@ public class SupportService {
     private final AccidentRepository accidentRepository;
 
     public void createSupport(SupportRequest request) {
-
         Accident accident = accidentRepository.findById(request.getAccidentId())
-                .orElseThrow();
+                .orElseThrow(() -> new DomainException(AccidentErrorCode.NOT_FOUND));
 
         supportRepository.save(
                 Support.builder()

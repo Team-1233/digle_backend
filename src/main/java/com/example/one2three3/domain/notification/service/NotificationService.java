@@ -1,6 +1,7 @@
 package com.example.one2three3.domain.notification.service;
 
 import com.example.one2three3.domain.accident.entity.Accident;
+import com.example.one2three3.domain.accident.entity.AccidentType;
 import com.example.one2three3.domain.accident.repository.AccidentRepository;
 import com.example.one2three3.domain.error.DomainException;
 import com.example.one2three3.domain.error.exception.AccidentErrorCode;
@@ -10,6 +11,7 @@ import com.example.one2three3.domain.notification.entity.Notification;
 import com.example.one2three3.domain.notification.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -31,9 +33,10 @@ public class NotificationService {
     }
 
     public List<NotificationResponse> getNotification() {
-        List<Notification> notification = notificationRepository.findAll();
+        List<Notification> notification = notificationRepository.findTop10ByOrderByTimeDesc();
 
-        return notification.stream().map(NotificationResponse::of)
+        return notification.stream()
+                .map(NotificationResponse::of)
                 .toList();
     }
 }

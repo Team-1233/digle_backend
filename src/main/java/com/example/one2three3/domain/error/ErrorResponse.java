@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public record ErrorResponse(String message, String code, int status) implements Serializable {
 
-    private static final String DEFAULT_MESSAGE = "";
+    private static final String DEFAULT_MESSAGE = "Something error";
 
     public static ErrorResponse of(ErrorCode errorCode) {
         return new ErrorResponse(DEFAULT_MESSAGE, errorCode.getCode(), errorCode.getStatus());
